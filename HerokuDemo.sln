@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistrationService", "RegistrationService\RegistrationService.csproj", "{9ABC3158-853C-4A24-8448-64E075783796}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignatureGenerator", "SignatureGenerator\SignatureGenerator.csproj", "{7B7DAD52-07E6-43B1-8972-77E9B21858D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{9ABC3158-853C-4A24-8448-64E075783796}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9ABC3158-853C-4A24-8448-64E075783796}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9ABC3158-853C-4A24-8448-64E075783796}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B7DAD52-07E6-43B1-8972-77E9B21858D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B7DAD52-07E6-43B1-8972-77E9B21858D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B7DAD52-07E6-43B1-8972-77E9B21858D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B7DAD52-07E6-43B1-8972-77E9B21858D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
