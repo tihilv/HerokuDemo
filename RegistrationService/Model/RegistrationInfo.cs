@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace RegistrationService.Controllers
+namespace RegistrationService.Model
 {
     public class RegistrationInfo
     {

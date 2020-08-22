@@ -1,39 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using RegistrationService.Abstractions;
+using RegistrationService.Model;
 
 namespace RegistrationService.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    [Route("api/[controller]")]
+    public class RegistrationController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        private readonly ILogger<RegistrationController> _logger;
+        private readonly ILicenseValidatorService _licenseValidatorService;
 
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public RegistrationController(ILogger<RegistrationController> logger, ILicenseValidatorService licenseValidatorService)
         {
             _logger = logger;
+            _licenseValidatorService = licenseValidatorService;
         }
 
-        [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] RegistrationInfo registrationInfo)
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-                {
-                    Date = DateTime.Now.AddDays(index),
-                    TemperatureC = rng.Next(-20, 55),
-                    Summary = Summaries[rng.Next(Summaries.Length)]
-                })
-                .ToArray();
+            _logger.LogTrace($"license request received: {registrationInfo.CompanyName}, {registrationInfo.ContactPerson}, {registrationInfo.Email}, {registrationInfo.Address}, {registrationInfo.LicenseKey}");
+
+            if (!_licenseValidatorService.IsLicenseInfoValid(registrationInfo))
+            {
+                _logger.LogTrace($"License key is invalid");
+                return StatusCode(StatusCodes.Status403Forbidden);
+            }
+
+            
+            string signature = "";
+            return Ok(new LicenseSignature() {LicenseKey = registrationInfo.LicenseKey, Signature = signature});
         }
     }
 }
