@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace RegistrationService.Model
@@ -19,5 +20,10 @@ namespace RegistrationService.Model
         
         [Required]
         public string LicenseKey { get; set; }
+
+        public override String ToString()
+        {
+            return $"{CompanyName}|{ContactPerson}|{Email}|{Address}|{LicenseKey}";
+        }
     }
 }
