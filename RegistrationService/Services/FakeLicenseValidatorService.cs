@@ -5,7 +5,7 @@ using RegistrationService.Model;
 
 namespace RegistrationService.Services
 {
-    public class FakeLicenseValidatorService: ILicenseValidatorService
+    internal sealed class FakeLicenseValidatorService: ILicenseValidatorService
     {
         public Boolean IsLicenseInfoValid(RegistrationInfo registrationInfo)
         {

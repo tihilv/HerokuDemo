@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RegistrationService.Model
 {
-    public class RegistrationInfo
+    public sealed class RegistrationInfo
     {
         [Required]
         public string CompanyName { get; set; } 

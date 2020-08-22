@@ -10,7 +10,7 @@ namespace RegistrationService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class RegistrationController : ControllerBase
+    public sealed class RegistrationController : ControllerBase
     {
         private readonly ILogger<RegistrationController> _logger;
         private readonly ILicenseValidatorService _licenseValidatorService;
